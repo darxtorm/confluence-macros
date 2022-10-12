@@ -1,0 +1,11 @@
+## Macro title: month-flexible
+## Macro has a body: N
+##
+## Developed by: darxtorm + cgatt 
+
+## @param AdjustBy:title=Add or Subtract Months|type=int|required=true|default=0|desc=Number of months to add or subtract.
+#set( $cal = $action.dateFormatter.calendar )
+$cal.setTime($content.currentDate)
+#set($integerAdjustBy = $generalUtil.convertToInteger($paramAdjustBy))
+$cal.add(2,$integerAdjustBy)
+$action.dateFormatter.formatGivenString("MMM-yy", $cal.getTime())
